@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">イングリッシュコーチ</string>
+
+    <string name="onboarding_choose_language_title">言語を選択してください</string>
+    <string name="onboarding_choose_language_subtitle">説明はこの言語で表示されます。スピーキング練習は常に英語で行います。</string>
+    <string name="onboarding_continue_cta">続ける</string>
+
+    <string name="home_today_mission_title">今日のミッション</string>
+    <string name="home_start_cta">開始</string>
+    <string name="home_continue_lesson_title">レッスンを続ける</string>
+    <string name="home_streak_label">連続学習日数</string>
+    <string name="home_speaking_minutes_label">スピーキング時間</string>
+    <string name="home_weak_pronunciation_label">苦手な発音</string>
+    <string name="home_no_weak_sounds_yet">レッスンを完了すると苦手な発音が表示されます</string>
+    <string name="home_recommended_review_label">おすすめ復習</string>
+
+    <string name="lesson_list_title">レッスンを選ぶ</string>
+    <string name="lesson_start_cta">レッスン開始</string>
+
+    <string name="lesson_mic_hint_idle">タップして話す</string>
+    <string name="lesson_mic_hint_listening">聞いています…</string>
+    <string name="lesson_finish_cta">レッスンを終える</string>
+
+    <string name="correction_repeat_cta">繰り返す</string>
+    <string name="speaker_coach">コーチ</string>
+    <string name="speaker_user">あなた</string>
+
+    <string name="character_customize_content_description">キャラクターをカスタマイズ</string>
+    <string name="character_customize_title">コーチをカスタマイズ</string>
+    <string name="character_choose_photo_cta">写真を選ぶ</string>
+    <string name="character_remove_photo_cta">写真を削除</string>
+    <string name="character_name_label">名前(任意)</string>
+    <string name="character_done_cta">完了</string>
+
+    <string name="summary_title">レッスン完了</string>
+    <string name="summary_grammar_mistakes_label">文法の間違い</string>
+    <string name="summary_vocabulary_learned_label">学んだ単語</string>
+    <string name="summary_pronunciation_score_label">発音スコア</string>
+    <string name="summary_fluency_score_label">流暢さスコア</string>
+    <string name="summary_words_to_review_label">復習する単語</string>
+    <string name="summary_replay_conversation_cta">会話をもう一度聞く</string>
+    <string name="summary_done_cta">完了</string>
+    <string name="summary_no_mistakes">今回は文法の間違いがありませんでした。よくできました!</string>
+
+    <string name="settings_title">設定</string>
+    <string name="settings_language_label">アプリの言語</string>
+
+    <string name="lesson_title_daily_conversation">日常会話</string>
+    <string name="lesson_mission_daily_conversation">コーチと日常的な世間話を練習しましょう。</string>
+    <string name="lesson_title_restaurant">レストラン</string>
+    <string name="lesson_mission_restaurant">レストランで料理を注文する練習をしましょう。</string>
+    <string name="lesson_title_airport">空港</string>
+    <string name="lesson_mission_airport">空港でのチェックインや手続きを練習しましょう。</string>
+    <string name="lesson_title_shopping">ショッピング</string>
+    <string name="lesson_mission_shopping">値段を尋ねたり試着したりする練習をしましょう。</string>
+    <string name="lesson_title_hotel">ホテル</string>
+    <string name="lesson_mission_hotel">ホテルのチェックインやサービス依頼を練習しましょう。</string>
+    <string name="lesson_title_job_interview">面接</string>
+    <string name="lesson_mission_job_interview">よくある面接の質問に答える練習をしましょう。</string>
+    <string name="lesson_title_business_english">ビジネス英語</string>
+    <string name="lesson_mission_business_english">仕事でプロジェクトについて話し、進捗を報告する練習をしましょう。</string>
+    <string name="lesson_title_travel">旅行</string>
+    <string name="lesson_mission_travel">道を尋ねたり旅行情報を聞いたりする練習をしましょう。</string>
+    <string name="lesson_title_doctor">病院</string>
+    <string name="lesson_mission_doctor">診察で症状を説明する練習をしましょう。</string>
+    <string name="lesson_title_phone_calls">電話</string>
+    <string name="lesson_mission_phone_calls">電話をかけたり受けたりする練習をしましょう。</string>
+    <string name="lesson_title_small_talk">世間話</string>
+    <string name="lesson_mission_small_talk">初対面の人との軽い会話を練習しましょう。</string>
+    <string name="lesson_title_emergency">緊急事態</string>
+    <string name="lesson_mission_emergency">緊急時に助けを求める練習をしましょう。</string>
+    <string name="lesson_title_dating">デート</string>
+    <string name="lesson_mission_dating">初デートでの会話を練習しましょう。</string>
+</resources>

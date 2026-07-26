@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -sSI *)",
+      "Bash(curl -sS -L \"https://api.github.com/*\")",
+      "Bash(\"/c/Users/seo/AppData/Local/Android/Sdk/platform-tools/adb.exe\" devices)"
+    ]
+  }
+}

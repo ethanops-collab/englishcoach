@@ -1,0 +1,13 @@
+Vendored from https://github.com/ggml-org/whisper.cpp release tag v1.9.1.
+
+Only the following directories were kept (examples/, tests/, bindings/, models/,
+samples/, coreml/, openvino/, docs, and the upstream build scripts were dropped):
+  - ggml/            (full ggml tensor library — built via add_subdirectory in
+                       ../../CMakeLists.txt with all GPU backends forced OFF)
+  - include/whisper.h
+  - src/whisper.cpp, src/whisper-arch.h
+
+Do not hand-edit files under this directory. To upgrade, re-download the release
+zip and replace these three paths wholesale, then re-check ../../CMakeLists.txt
+against upstream's src/CMakeLists.txt for any new source files added to the
+`whisper` target.

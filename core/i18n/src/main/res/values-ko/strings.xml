@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">잉글리시 코치</string>
+
+    <string name="onboarding_choose_language_title">언어를 선택하세요</string>
+    <string name="onboarding_choose_language_subtitle">설명은 이 언어로 표시됩니다. 말하기 연습은 항상 영어로 진행됩니다.</string>
+    <string name="onboarding_continue_cta">계속</string>
+
+    <string name="home_today_mission_title">오늘의 미션</string>
+    <string name="home_start_cta">시작하기</string>
+    <string name="home_continue_lesson_title">이어서 학습하기</string>
+    <string name="home_streak_label">연속 학습일</string>
+    <string name="home_speaking_minutes_label">말하기 시간</string>
+    <string name="home_weak_pronunciation_label">약한 발음</string>
+    <string name="home_no_weak_sounds_yet">레슨을 완료하면 약한 발음이 표시됩니다</string>
+    <string name="home_recommended_review_label">추천 복습</string>
+
+    <string name="lesson_list_title">레슨 선택</string>
+    <string name="lesson_start_cta">레슨 시작</string>
+
+    <string name="lesson_mic_hint_idle">눌러서 말하기</string>
+    <string name="lesson_mic_hint_listening">듣고 있어요…</string>
+    <string name="lesson_finish_cta">레슨 종료</string>
+
+    <string name="correction_repeat_cta">따라 말하기</string>
+    <string name="speaker_coach">코치</string>
+    <string name="speaker_user">나</string>
+
+    <string name="character_customize_content_description">캐릭터 꾸미기</string>
+    <string name="character_customize_title">코치 캐릭터 꾸미기</string>
+    <string name="character_choose_photo_cta">사진 선택</string>
+    <string name="character_remove_photo_cta">사진 삭제</string>
+    <string name="character_name_label">이름 (선택 사항)</string>
+    <string name="character_done_cta">완료</string>
+
+    <string name="summary_title">레슨 완료</string>
+    <string name="summary_grammar_mistakes_label">문법 실수</string>
+    <string name="summary_vocabulary_learned_label">학습한 단어</string>
+    <string name="summary_pronunciation_score_label">발음 점수</string>
+    <string name="summary_fluency_score_label">유창성 점수</string>
+    <string name="summary_words_to_review_label">복습할 단어</string>
+    <string name="summary_replay_conversation_cta">대화 다시 듣기</string>
+    <string name="summary_done_cta">완료</string>
+    <string name="summary_no_mistakes">이번엔 문법 실수가 없었어요. 잘했어요!</string>
+
+    <string name="settings_title">설정</string>
+    <string name="settings_language_label">앱 언어</string>
+
+    <string name="lesson_title_daily_conversation">일상 대화</string>
+    <string name="lesson_mission_daily_conversation">코치와 일상적인 스몰토크를 연습해 보세요.</string>
+    <string name="lesson_title_restaurant">레스토랑</string>
+    <string name="lesson_mission_restaurant">레스토랑에서 음식을 주문하는 연습을 해보세요.</string>
+    <string name="lesson_title_airport">공항</string>
+    <string name="lesson_mission_airport">공항 체크인과 수속 과정을 연습해 보세요.</string>
+    <string name="lesson_title_shopping">쇼핑</string>
+    <string name="lesson_mission_shopping">가격을 물어보고 옷을 입어보는 연습을 해보세요.</string>
+    <string name="lesson_title_hotel">호텔</string>
+    <string name="lesson_mission_hotel">호텔 체크인과 서비스 요청을 연습해 보세요.</string>
+    <string name="lesson_title_job_interview">면접</string>
+    <string name="lesson_mission_job_interview">자주 나오는 면접 질문에 답하는 연습을 해보세요.</string>
+    <string name="lesson_title_business_english">비즈니스 영어</string>
+    <string name="lesson_mission_business_english">업무에서 프로젝트를 논의하고 진행 상황을 보고하는 연습을 해보세요.</string>
+    <string name="lesson_title_travel">여행</string>
+    <string name="lesson_mission_travel">길을 묻고 여행 정보를 물어보는 연습을 해보세요.</string>
+    <string name="lesson_title_doctor">병원</string>
+    <string name="lesson_mission_doctor">병원 진료에서 증상을 설명하는 연습을 해보세요.</string>
+    <string name="lesson_title_phone_calls">전화 통화</string>
+    <string name="lesson_mission_phone_calls">전화를 걸고 받는 연습을 해보세요.</string>
+    <string name="lesson_title_small_talk">스몰토크</string>
+    <string name="lesson_mission_small_talk">처음 만난 사람과 가벼운 대화를 연습해 보세요.</string>
+    <string name="lesson_title_emergency">긴급 상황</string>
+    <string name="lesson_mission_emergency">긴급 상황에서 도움을 요청하는 연습을 해보세요.</string>
+    <string name="lesson_title_dating">데이트</string>
+    <string name="lesson_mission_dating">첫 데이트에서 나눌 대화를 연습해 보세요.</string>
+</resources>

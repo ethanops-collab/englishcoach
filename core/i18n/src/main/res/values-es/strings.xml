@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">English Coach</string>
+
+    <string name="onboarding_choose_language_title">Elige tu idioma</string>
+    <string name="onboarding_choose_language_subtitle">Mostraremos las explicaciones en este idioma. Siempre practicarás para hablar en inglés.</string>
+    <string name="onboarding_continue_cta">Continuar</string>
+
+    <string name="home_today_mission_title">Misión de Hoy</string>
+    <string name="home_start_cta">Empezar</string>
+    <string name="home_continue_lesson_title">Continuar Lección</string>
+    <string name="home_streak_label">Días Seguidos</string>
+    <string name="home_speaking_minutes_label">Minutos Hablados</string>
+    <string name="home_weak_pronunciation_label">Pronunciación Débil</string>
+    <string name="home_no_weak_sounds_yet">Completa una lección para ver tus sonidos débiles</string>
+    <string name="home_recommended_review_label">Repaso Recomendado</string>
+
+    <string name="lesson_list_title">Elige una Lección</string>
+    <string name="lesson_start_cta">Iniciar Lección</string>
+
+    <string name="lesson_mic_hint_idle">Toca para hablar</string>
+    <string name="lesson_mic_hint_listening">Escuchando…</string>
+    <string name="lesson_finish_cta">Terminar Lección</string>
+
+    <string name="correction_repeat_cta">Repetirlo</string>
+    <string name="speaker_coach">Coach</string>
+    <string name="speaker_user">Tú</string>
+
+    <string name="character_customize_content_description">Personalizar personaje</string>
+    <string name="character_customize_title">Personaliza a tu coach</string>
+    <string name="character_choose_photo_cta">Elegir foto</string>
+    <string name="character_remove_photo_cta">Quitar foto</string>
+    <string name="character_name_label">Nombre (opcional)</string>
+    <string name="character_done_cta">Listo</string>
+
+    <string name="summary_title">Lección Completada</string>
+    <string name="summary_grammar_mistakes_label">Errores de Gramática</string>
+    <string name="summary_vocabulary_learned_label">Vocabulario Aprendido</string>
+    <string name="summary_pronunciation_score_label">Puntuación de Pronunciación</string>
+    <string name="summary_fluency_score_label">Puntuación de Fluidez</string>
+    <string name="summary_words_to_review_label">Palabras para Repasar</string>
+    <string name="summary_replay_conversation_cta">Repetir Conversación</string>
+    <string name="summary_done_cta">Listo</string>
+    <string name="summary_no_mistakes">Sin errores de gramática esta vez. ¡Muy bien!</string>
+
+    <string name="settings_title">Ajustes</string>
+    <string name="settings_language_label">Idioma de la App</string>
+
+    <string name="lesson_title_daily_conversation">Conversación Diaria</string>
+    <string name="lesson_mission_daily_conversation">Practica charla cotidiana con tu coach.</string>
+    <string name="lesson_title_restaurant">Restaurante</string>
+    <string name="lesson_mission_restaurant">Practica pedir comida en un restaurante.</string>
+    <string name="lesson_title_airport">Aeropuerto</string>
+    <string name="lesson_mission_airport">Practica el check-in y los trámites del aeropuerto.</string>
+    <string name="lesson_title_shopping">Compras</string>
+    <string name="lesson_mission_shopping">Practica preguntar precios y probarte ropa.</string>
+    <string name="lesson_title_hotel">Hotel</string>
+    <string name="lesson_mission_hotel">Practica el check-in y pedir servicios de hotel.</string>
+    <string name="lesson_title_job_interview">Entrevista de Trabajo</string>
+    <string name="lesson_mission_job_interview">Practica responder preguntas comunes de entrevista.</string>
+    <string name="lesson_title_business_english">Inglés de Negocios</string>
+    <string name="lesson_mission_business_english">Practica hablar de proyectos y dar actualizaciones en el trabajo.</string>
+    <string name="lesson_title_travel">Viajes</string>
+    <string name="lesson_mission_travel">Practica pedir direcciones e información de viaje.</string>
+    <string name="lesson_title_doctor">Médico</string>
+    <string name="lesson_mission_doctor">Practica describir síntomas en una consulta médica.</string>
+    <string name="lesson_title_phone_calls">Llamadas Telefónicas</string>
+    <string name="lesson_mission_phone_calls">Practica hacer y contestar llamadas telefónicas.</string>
+    <string name="lesson_title_small_talk">Charla Informal</string>
+    <string name="lesson_mission_small_talk">Practica una conversación informal con gente nueva.</string>
+    <string name="lesson_title_emergency">Emergencia</string>
+    <string name="lesson_mission_emergency">Practica pedir ayuda en una emergencia.</string>
+    <string name="lesson_title_dating">Citas</string>
+    <string name="lesson_mission_dating">Practica la conversación en una primera cita.</string>
+</resources>

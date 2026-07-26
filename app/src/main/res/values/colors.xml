@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Matches core/designsystem's Neutral99 light background so there's no flash of a
+         mismatched color before Compose's EnglishCoachTheme takes over. -->
+    <color name="coach_background">#FBFDF9</color>
+</resources>
