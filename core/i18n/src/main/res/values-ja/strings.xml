@@ -21,6 +21,8 @@
     <string name="lesson_mic_hint_idle">タップして話す</string>
     <string name="lesson_mic_hint_listening">聞いています…</string>
     <string name="lesson_finish_cta">レッスンを終える</string>
+    <string name="lesson_coach_unavailable_title">コーチを利用できません</string>
+    <string name="lesson_coach_unavailable_body">端末上のAIモデルを読み込めませんでした。モデルファイルが端末にインストールされているか確認してから、もう一度お試しください。</string>
 
     <string name="correction_repeat_cta">繰り返す</string>
     <string name="speaker_coach">コーチ</string>

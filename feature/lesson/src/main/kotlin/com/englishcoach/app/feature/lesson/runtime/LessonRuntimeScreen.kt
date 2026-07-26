@@ -48,6 +48,7 @@ import androidx.core.content.ContextCompat
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImage
+import com.englishcoach.app.core.designsystem.component.CoachCard
 import com.englishcoach.app.core.designsystem.component.CorrectionCard
 import com.englishcoach.app.core.designsystem.component.MicButton
 import com.englishcoach.app.core.designsystem.component.MicState
@@ -165,6 +166,13 @@ fun LessonRuntimeScreen(
             )
         },
     ) { padding ->
+        if (sessionState.phase == SessionPhase.ERROR) {
+            CoachUnavailable(
+                message = sessionState.errorMessage,
+                modifier = Modifier.fillMaxSize().padding(padding),
+            )
+            return@Scaffold
+        }
         Column(modifier = Modifier.fillMaxSize().padding(padding)) {
             LazyColumn(
                 modifier = Modifier.weight(1f).fillMaxWidth(),
@@ -220,6 +228,32 @@ fun LessonRuntimeScreen(
                         )
                     }
                 }
+            }
+        }
+    }
+}
+
+/** Shown instead of the conversation when an on-device engine (LLM/STT/TTS) fails to load -
+ * e.g. the model file isn't present on this device yet - instead of crashing. */
+@Composable
+private fun CoachUnavailable(message: String?, modifier: Modifier = Modifier) {
+    Box(modifier = modifier.padding(Dimens.ScreenPadding), contentAlignment = Alignment.Center) {
+        CoachCard(modifier = Modifier.fillMaxWidth()) {
+            Text(
+                text = stringResource(I18nR.string.lesson_coach_unavailable_title),
+                style = MaterialTheme.typography.titleLarge,
+            )
+            Text(
+                text = stringResource(I18nR.string.lesson_coach_unavailable_body),
+                style = MaterialTheme.typography.bodyMedium,
+                modifier = Modifier.padding(top = Dimens.SpaceS),
+            )
+            message?.let {
+                Text(
+                    text = it,
+                    style = MaterialTheme.typography.bodySmall,
+                    modifier = Modifier.padding(top = Dimens.SpaceM),
+                )
             }
         }
     }

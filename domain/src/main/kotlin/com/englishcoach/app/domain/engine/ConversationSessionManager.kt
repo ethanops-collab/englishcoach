@@ -17,6 +17,7 @@ import com.englishcoach.app.engine.pronunciation.RecognizedWord
 import com.englishcoach.app.engine.speech.SpeechRecognizer
 import com.englishcoach.app.engine.tts.SynthesizedAudio
 import com.englishcoach.app.engine.tts.TextToSpeechEngine
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
@@ -30,13 +31,14 @@ import javax.inject.Inject
  * state ([com.englishcoach.app.feature.lesson.runtime.LessonViewModel]'s `isRecording`)
  * because this manager only reacts once a full utterance has been captured.
  */
-enum class SessionPhase { IDLE, TRANSCRIBING, ANALYZING, CORRECTING, SPEAKING, COMPLETE }
+enum class SessionPhase { IDLE, TRANSCRIBING, ANALYZING, CORRECTING, SPEAKING, COMPLETE, ERROR }
 
 data class SessionUiState(
     val lesson: Lesson? = null,
     val phase: SessionPhase = SessionPhase.IDLE,
     val turns: List<ConversationTurn> = emptyList(),
     val lastPronunciationScore: PronunciationScore? = null,
+    val errorMessage: String? = null,
 )
 
 /**
@@ -67,18 +69,33 @@ class ConversationSessionManager @Inject constructor(
         this.nativeLanguageTag = nativeLanguageTag
         _uiState.value = SessionUiState(lesson = lesson)
 
-        val opening = llmCoach.complete(
-            LlmRequest(
-                systemPrompt = CoachPromptTemplates.personaSystemPrompt(lesson.type, lesson.missionKey),
-                messages = listOf(
-                    LlmMessage(
-                        LlmRole.USER,
-                        CoachPromptTemplates.demonstrationPrompt(lesson.type, lesson.targetPhraseCount),
+        val opening = guarded {
+            llmCoach.complete(
+                LlmRequest(
+                    systemPrompt = CoachPromptTemplates.personaSystemPrompt(lesson.type, lesson.missionKey),
+                    messages = listOf(
+                        LlmMessage(
+                            LlmRole.USER,
+                            CoachPromptTemplates.demonstrationPrompt(lesson.type, lesson.targetPhraseCount),
+                        ),
                     ),
                 ),
-            ),
-        )
+            )
+        } ?: return
         speak(opening.text)
+    }
+
+    /** Runs an on-device engine call (LLM/STT/TTS), turning a failure (e.g. a missing model
+     * file - none of these engines bundle or auto-download their models) into an
+     * [SessionPhase.ERROR] state instead of an uncaught crash. Cancellation is rethrown so
+     * structured concurrency (e.g. the ViewModel scope being cleared) still works correctly. */
+    private suspend fun <T> guarded(block: suspend () -> T): T? = try {
+        block()
+    } catch (e: CancellationException) {
+        throw e
+    } catch (e: Exception) {
+        _uiState.update { it.copy(phase = SessionPhase.ERROR, errorMessage = e.message) }
+        null
     }
 
     /** Called by the UI once it has captured and stopped recording one user turn. */
@@ -86,17 +103,19 @@ class ConversationSessionManager @Inject constructor(
         val lesson = _uiState.value.lesson ?: return
 
         _uiState.update { it.copy(phase = SessionPhase.TRANSCRIBING) }
-        val transcription = speechRecognizer.transcribe(audioPcm16)
+        val transcription = guarded { speechRecognizer.transcribe(audioPcm16) } ?: return
         addTurn(Speaker.USER, transcription.text)
 
         _uiState.update { it.copy(phase = SessionPhase.ANALYZING) }
-        val llmResponse = llmCoach.complete(
-            LlmRequest(
-                systemPrompt = CoachPromptTemplates.personaSystemPrompt(lesson.type, lesson.missionKey) +
-                    "\n" + CoachPromptTemplates.correctionContract,
-                messages = listOf(LlmMessage(LlmRole.USER, transcription.text)),
-            ),
-        )
+        val llmResponse = guarded {
+            llmCoach.complete(
+                LlmRequest(
+                    systemPrompt = CoachPromptTemplates.personaSystemPrompt(lesson.type, lesson.missionKey) +
+                        "\n" + CoachPromptTemplates.correctionContract,
+                    messages = listOf(LlmMessage(LlmRole.USER, transcription.text)),
+                ),
+            )
+        } ?: return
         val parsed = grammarCorrectionEngine.parse(transcription.text, llmResponse.text)
 
         val referenceText = parsed.correction?.correctedText ?: transcription.text
@@ -132,7 +151,7 @@ class ConversationSessionManager @Inject constructor(
     suspend fun acknowledgeCorrectionAndContinue(repeatedAudioPcm16: ShortArray) {
         val lesson = _uiState.value.lesson ?: return
         _uiState.update { it.copy(phase = SessionPhase.TRANSCRIBING) }
-        val repeated = speechRecognizer.transcribe(repeatedAudioPcm16)
+        val repeated = guarded { speechRecognizer.transcribe(repeatedAudioPcm16) } ?: return
         val correctedReference = pendingCorrection?.correctedText ?: repeated.text
         val pronunciation = pronunciationScorer.score(
             referenceText = correctedReference,
@@ -142,12 +161,14 @@ class ConversationSessionManager @Inject constructor(
         _uiState.update { it.copy(lastPronunciationScore = pronunciation) }
         pendingCorrection = null
 
-        val continuation = llmCoach.complete(
-            LlmRequest(
-                systemPrompt = CoachPromptTemplates.personaSystemPrompt(lesson.type, lesson.missionKey),
-                messages = listOf(LlmMessage(LlmRole.USER, correctedReference)),
-            ),
-        )
+        val continuation = guarded {
+            llmCoach.complete(
+                LlmRequest(
+                    systemPrompt = CoachPromptTemplates.personaSystemPrompt(lesson.type, lesson.missionKey),
+                    messages = listOf(LlmMessage(LlmRole.USER, correctedReference)),
+                ),
+            )
+        } ?: return
         speak(continuation.text)
     }
 
@@ -157,7 +178,7 @@ class ConversationSessionManager @Inject constructor(
 
     private suspend fun speak(text: String) {
         _uiState.update { it.copy(phase = SessionPhase.SPEAKING) }
-        val audio = ttsEngine.synthesize(text)
+        val audio = guarded { ttsEngine.synthesize(text) } ?: return
         addTurn(Speaker.COACH, text)
         _playbackEvents.tryEmit(audio)
         _uiState.update { it.copy(phase = SessionPhase.IDLE) }

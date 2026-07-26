@@ -21,6 +21,8 @@
     <string name="lesson_mic_hint_idle">Tap to speak</string>
     <string name="lesson_mic_hint_listening">Listening…</string>
     <string name="lesson_finish_cta">Finish Lesson</string>
+    <string name="lesson_coach_unavailable_title">Coach unavailable</string>
+    <string name="lesson_coach_unavailable_body">The on-device model couldn\'t be loaded. Make sure the model file is installed on this device, then try again.</string>
 
     <string name="correction_repeat_cta">Repeat it</string>
     <string name="speaker_coach">Coach</string>

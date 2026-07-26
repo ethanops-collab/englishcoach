@@ -21,6 +21,8 @@
     <string name="lesson_mic_hint_idle">Toca para hablar</string>
     <string name="lesson_mic_hint_listening">Escuchando…</string>
     <string name="lesson_finish_cta">Terminar Lección</string>
+    <string name="lesson_coach_unavailable_title">Coach no disponible</string>
+    <string name="lesson_coach_unavailable_body">No se pudo cargar el modelo en el dispositivo. Asegúrate de que el archivo del modelo esté instalado en este dispositivo e inténtalo de nuevo.</string>
 
     <string name="correction_repeat_cta">Repetirlo</string>
     <string name="speaker_coach">Coach</string>
