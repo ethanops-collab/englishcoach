@@ -79,7 +79,7 @@ class WhisperSpeechRecognizer @Inject constructor(
 
         return withContext(Dispatchers.Default) {
             val samples = FloatArray(audioPcm16.size) { i -> audioPcm16[i] / 32768f }
-            val nThreads = Runtime.getRuntime().availableProcessors().coerceIn(1, 4)
+            val nThreads = Runtime.getRuntime().availableProcessors().coerceIn(1, 8)
             val raw = WhisperNative.nativeTranscribe(ctxPtr, samples, nThreads)
             parseResult(raw)
         }

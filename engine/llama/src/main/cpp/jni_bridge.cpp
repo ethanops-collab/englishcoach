@@ -1,6 +1,7 @@
 #include <jni.h>
 #include <android/log.h>
 #include <string>
+#include <thread>
 #include <vector>
 
 #include "llama.h"
@@ -41,12 +42,16 @@ Java_com_englishcoach_app_engine_llama_LlamaNative_nativeInit(
         return 0;
     }
 
+    // Use all available cores rather than a hardcoded guess - phones vary widely (4 to 8+
+    // cores), and this is the single biggest lever on token-generation latency.
+    const int32_t n_threads = std::max(1u, std::thread::hardware_concurrency());
+
     llama_context_params ctx_params = llama_context_default_params();
     ctx_params.n_ctx = 2048;
     ctx_params.n_batch = 512;
     ctx_params.n_ubatch = 512;
-    ctx_params.n_threads = 4;
-    ctx_params.n_threads_batch = 4;
+    ctx_params.n_threads = n_threads;
+    ctx_params.n_threads_batch = n_threads;
 
     llama_context *ctx = llama_init_from_model(model, ctx_params);
     if (ctx == nullptr) {
